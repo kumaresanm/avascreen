@@ -11,6 +11,7 @@ export class CandidateComponent {
   candidateVideoUrl = 'https://www.youtube.com/embed/example-video-id';
   public webcamImage: WebcamImage | undefined; // Change here
   public trigger: Subject<void> = new Subject<void>();
+  public flipCamera = true;
 
   constructor() { }
 
