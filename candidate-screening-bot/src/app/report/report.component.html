@@ -1,1 +1,126 @@
-<p>report works!</p>
+<mat-card-header>
+  <div class="header-content">
+    <img src="/assets/logo.svg" alt="Logo" class="logo">
+    <div class="title-container">
+      <mat-card-title>Interview Report</mat-card-title>
+      <mat-card-subtitle>Powered by - AvaScreen</mat-card-subtitle>
+    </div>
+  </div>
+</mat-card-header>
+
+<!-- Main Content Section -->
+<mat-card-content class="main-content">
+  <!-- Candidate Info and Score Overview Section -->
+  <mat-card class="candidate-score-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px"
+    fxLayoutAlign="start center">
+    <!-- Candidate Details and Photo Section -->
+    <div fxFlex="50" fxFlex.xs="100" class="candidate-info">
+      <!-- Candidate Photo -->
+      <div class="photo">
+        <img src="/assets/candidate.jpg" alt="Candidate Photo" class="candidate-photo" />
+      </div>
+      <!-- Candidate Details -->
+      <div class="details">
+        <h2>Pratik Patel</h2>
+        <p><strong>Email:</strong> pratik.patel4057&#64;gmail.com</p>
+        <p><strong>Role:</strong> Full Stack Web Developer</p>
+        <p><strong>Years of experience:</strong> 4.00 yrs</p>
+        <div class="skills-assessed">
+          <strong>Skills assessed:</strong>
+          <mat-chip-listbox aria-label="Skill chips">
+            <mat-chip>Bootstrap</mat-chip>
+            <mat-chip>CSS</mat-chip>
+            <mat-chip>Git</mat-chip>
+            <mat-chip>HTML</mat-chip>
+            <mat-chip>JavaScript</mat-chip>
+            <mat-chip>Laravel</mat-chip>
+            <mat-chip>MySQL</mat-chip>
+            <mat-chip>Webpack</mat-chip>
+            <mat-chip>PHP 7.0/8.0</mat-chip>
+          </mat-chip-listbox>
+        </div>
+        <p><strong>Language & communication:</strong> CEFR grade: B2</p>
+      </div>
+    </div>
+
+    <!-- Score Overview Section -->
+    <div fxFlex="50" fxFlex.xs="100" class="score-overview">
+      <circle-progress [percent]="overallScore" [radius]="100" [outerStrokeWidth]="16"
+        [outerStrokeColor]="outerStrokeColor" [innerStrokeColor]="innerStrokeColor" [animation]="true"
+        [animationDuration]="300" [showSubtitle]="false" [showInnerStroke]="false" [title]="overallScore + '%'"
+        [units]="'%'" [subtitle]="'Overall Score'" [showUnits]="true" [showBackground]="false" [startFromZero]="false"
+        (click)="showCategorizedScores($event)">
+      </circle-progress>
+    </div>
+  </mat-card>
+</mat-card-content>
+
+<mat-divider></mat-divider>
+
+<mat-card-content>
+  <!-- Questions and AI Review Section -->
+  <div class="ai-review-container">
+    <div *ngFor="let card of questionCards" class="ai-review-card">
+      <mat-card>
+        <mat-card-title>{{ card.questionNumber }}</mat-card-title>
+        <mat-card-subtitle>{{ card.question }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>Reviewed by AI</p>
+          <p>{{ card.reviewSummary }}</p>
+          <mat-progress-bar mode="determinate" [value]="card.progressBarValue"></mat-progress-bar>
+          <p><strong>Score:</strong> {{ card.score }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-card-content>
+
+<mat-divider></mat-divider>
+
+<mat-card-content>
+  <mat-card>
+    <mat-card-title>Recorded Responses</mat-card-title>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start start">
+      <!-- Left Pane - List of Recorded Responses -->
+      <div fxFlex="30" class="responses-list">
+        <mat-nav-list class="nav-list">
+          <mat-list-item *ngFor="let response of recordedResponses">
+            <!-- Flex layout for horizontal alignment -->
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <img matListAvatar [src]="response.thumbnailUrl" alt="Thumbnail" style="width: 50px; height: 50px;">
+
+              <!-- Text content and details -->
+              <div fxFlex fxLayout="column" fxLayoutGap="5px">
+                <h3 matLine>{{ response.question }}</h3>
+                <p matLine>
+                  <span>Score: {{ response.score }}/{{ response.maxScore }}</span> |
+                  <span>Duration: {{ response.duration | date:'mm:ss' }} minutes</span>
+                </p>
+              </div>
+
+              <!-- Play button -->
+              <button mat-icon-button (click)="selectVideo(response.videoUrl)">
+                <mat-icon>play_circle_filled</mat-icon>
+              </button>
+            </div>
+            <mat-divider [inset]="true"></mat-divider>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+
+      <!-- Right Pane - Video Display -->
+      <div fxFlex="70" class="video-display">
+        <video *ngIf="selectedVideo" controls>
+          <source [src]="selectedVideo | safeUrl" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p *ngIf="!selectedVideo">Select a video to play</p>
+      </div>
+    </div>
+  </mat-card>
+</mat-card-content>
+
+<mat-divider></mat-divider>
+<mat-card-actions>
+  <button mat-button>VIEW FULL REPORT</button>
+</mat-card-actions>

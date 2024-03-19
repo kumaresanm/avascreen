@@ -1,0 +1,220 @@
+mat-card {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+mat-card-header .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 150px; /* Adjust based on your logo's size */
+  height: auto; /* Maintains aspect ratio */
+}
+
+.title-container {
+  text-align: right;
+}
+mat-card-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+mat-card-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/*
+
+*/
+/* Main content styles */
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left pane styles */
+.candidate-info {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-right: 20px; /* Adjust the space between the left and right panes */
+}
+
+/* Candidate details styles */
+.details {
+  flex: 1;
+}
+
+.details h2 {
+  margin-bottom: 0.5em;
+}
+
+.details p {
+  margin-bottom: 0.25em;
+  line-height: 1.4;
+}
+
+/* Candidate photo styles */
+.photo {
+  margin-right: 20px; /* Adjust spacing between photo and details */
+  border-radius: 50%; /* Makes the photo circular */
+  overflow: hidden; /* Ensures the image doesn't bleed outside the border-radius */
+  width: 150px; /* Adjust to your preference */
+  height: 150px; /* Adjust to maintain aspect ratio */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+.candidate-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the area */
+}
+
+/* Right pane styles */
+.score-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end; /* Centers the score circles if they don't occupy full width */
+  align-items: center;
+  padding: 20px;
+}
+
+.score-circle {
+  /* Placeholder styles for score circles */
+  width: 100px; /* Adjust based on your design */
+  height: 100px; /* Adjust to maintain aspect ratio */
+  border-radius: 50%; /* Makes the score placeholder circular */
+  background-color: #e0e0e0; /* Placeholder background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+mat-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Space between chips */
+}
+
+mat-chip {
+  background-color: #e0e0e0; /* Light grey background */
+  color: #424242; /* Dark grey color */
+}
+
+/* Divider styles */
+mat-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* AI review and recorded responses styles */
+.ai-review-container, .recorded-responses-container {
+  margin-top: 20px;
+}
+
+/* Recorded response video styles */
+.recorded-response video {
+  width: 100%; /* Makes video responsive */
+  margin-top: 10px;
+}
+
+/* Button styles */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+mat-card-actions button {
+  background-color: #00796b; /* Adjust to match your branding */
+  color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .candidate-info, .score-overview {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .candidate-info {
+    margin-bottom: 20px; /* Adds space between sections on smaller screens */
+  }
+
+  .score-overview {
+    padding: 0;
+  }
+}
+circle-progress {
+  cursor: pointer; /* To indicate it's clickable */
+}
+
+/* Style for tooltip or overlay that shows categorized scores */
+.categorized-scores {
+  display: none; /* Initially hidden, will be displayed on hover or click */
+  position: absolute;
+  /* Additional styling */
+}
+
+.questions-list {
+  overflow-y: auto; /* Allows scrolling if there are many questions */
+  max-height: 400px; /* Adjust to fit the design */
+  border-right: 1px solid #ddd; /* Visual separation from the video pane */
+}
+
+.video-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.question-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.question-details span {
+  margin-right: 10px; /* Space between text and button */
+}
+
+mat-icon-button {
+  margin-left: auto; /* Align the button to the right */
+}
+
+video {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.nav-list {
+  padding-top: 0px !important;
+}
+
+.small {
+    color: #999;
+  }
+
+.plan1 mat-icon {
+  color: #ccc;
+}
+
+.plan2 mat-icon {
+  color: #ccc;
+}
+
+.mdc-list-item.mdc-list-item--with-one-line {
+  height: auto;
+}
