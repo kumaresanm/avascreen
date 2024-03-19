@@ -17,7 +17,7 @@ export class LoginComponent {
     // Implement your login logic here
     // For simplicity, just redirect to admin page
     if(this.username == 'admin' && this.password == 'admin'){
-      this.router.navigate(["admin"]);
+      this.router.navigate(["report"]);
      }
      else if(this.username == 'candidate' && this.password == 'candidate'){
       this.router.navigate(["candidate"]); 

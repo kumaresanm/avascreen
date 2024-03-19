@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { WebcamModule } from 'ngx-webcam';
 
 // Angular Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -59,7 +60,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     HttpClientModule,
     FlexLayoutModule,
     AppRoutingModule,
-
+    WebcamModule,
     // Angular Material Modules
     MatToolbarModule,
     MatInputModule,

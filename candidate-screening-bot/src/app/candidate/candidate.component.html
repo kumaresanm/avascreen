@@ -3,6 +3,19 @@
     <app-chat></app-chat>
   </div>
   <div class="right-pane">
-    <iframe [src]="candidateVideoUrl"></iframe>
+    <div class="camera-container">
+      <h1 class="liveCameraText">Live Camera</h1>
+      <div class="camera-box">
+        
+        <webcam
+          [width]="640"
+          [height]="480"
+          [trigger]="trigger"
+          (imageCapture)="handleImage($event)"
+          (cameraError)="handleError($event)"
+        ></webcam>
+      </div>
+    </div>
+    <!-- <iframe [src]="candidateVideoUrl"></iframe> -->
   </div>
 </div>

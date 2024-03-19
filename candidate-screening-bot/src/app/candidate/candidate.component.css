@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .left-pane {
+    flex: 1; /* Occupy half of the available space */
+    position: relative;
+    border-right: 1px solid #ccc;
+  }
+  
+  .right-pane {
+    flex: 1;
+    margin-left: 10px; /* Add margin for separation (optional) */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
+ 
+  .camera-box {
+    margin-top: 15%;
+    margin-bottom: 30%;
+    padding-bottom: 150px;
+  }
+  .camera-container {
+    display: flex;
+    flex-direction: column; /* Set flex direction to column */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+  }
+  
+  .liveCameraText {
+    margin-top: 80px; /* Optional: Add spacing between Live Camera text and camera box */
+    color: orange;
+  }
