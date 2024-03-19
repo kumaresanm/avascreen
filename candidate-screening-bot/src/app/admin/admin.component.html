@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Resume</th>
+      <th>Report</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidate of candidates">
+      <td>{{ candidate.name }}</td>
+      <td>{{ candidate.email }}</td>
+      <td><a [href]="candidate.resume">Resume</a></td>
+      <td><a [href]="candidate.report">Report</a></td>
+    </tr>
+  </tbody>
+</table>
