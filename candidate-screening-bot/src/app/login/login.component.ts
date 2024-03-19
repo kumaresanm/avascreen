@@ -9,14 +9,21 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string | undefined;
   password: string | undefined;
+  showSpinner: boolean = false;
 
   constructor(private router: Router) {}
 
   login() {
     // Implement your login logic here
     // For simplicity, just redirect to admin page
-    this.username = 'Kumar';
-    this.password = 'testpassword';
-    this.router.navigate(['/admin']);
+    if(this.username == 'admin' && this.password == 'admin'){
+      this.router.navigate(["admin"]);
+     }
+     else if(this.username == 'candidate' && this.password == 'candidate'){
+      this.router.navigate(["candidate"]); 
+     }
+     else{
+      alert("Invalid credentials");
+     }
   }
 }
