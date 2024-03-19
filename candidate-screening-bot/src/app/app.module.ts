@@ -1,26 +1,46 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+// Angular Material Modules
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
+
+// Custom Modules
+import { CustomMaterialModule } from './core/material.module';
+
+// Components
+import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { ChatComponent } from './chat/chat.component';
 import { ReportComponent } from './report/report.component';
+
+// Routing Module
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatChipsModule } from '@angular/material/chips';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgCircleProgressModule } from 'ng-circle-progress';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
+
+// Pipes
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+
+// Third-Party Modules
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -35,17 +55,32 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    FlexLayoutModule,
+    AppRoutingModule,
+
+    // Angular Material Modules
+    MatToolbarModule,
+    MatInputModule,
     MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule,
     MatGridListModule,
     MatProgressBarModule,
-    MatButtonModule,
     MatDividerModule,
     MatChipsModule,
-    FlexLayoutModule,
     MatListModule,
-    MatIconModule,
+
+    // Custom Modules
+    CustomMaterialModule,
+
+    // Third-Party Modules
     NgCircleProgressModule.forRoot({
       radius: 80,
       outerStrokeWidth: 16,
