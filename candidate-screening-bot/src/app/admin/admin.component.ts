@@ -1,32 +1,22 @@
 import {   ChangeDetectorRef,
   Component,
+  OnDestroy,
   OnInit,
   VERSION,
   ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
-import { ChartComponent } from "ng-apexcharts";
-import {
-  ApexNonAxisChartSeries,
-  ApexResponsive,
-  ApexChart
-} from "ng-apexcharts";
+import { Observable, Subscription } from 'rxjs';
+import { DataService } from '../data.service';
 
-export type ChartOptions = {
-  series: ApexNonAxisChartSeries;
-  chart: ApexChart;
-  responsive: ApexResponsive[];
-  labels: any;
-};
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
-  @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: Partial<ChartOptions> | any;;
+export class AdminComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
+
 
   candidates = [
     { name: 'Candidate 1', email: 'candidate1@example.com', resume: 'http://example.com/resume1.pdf', report: 'http://example.com/report1.pdf', status: "Pending"},
@@ -55,33 +45,59 @@ export class AdminComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataObs$: Observable<any>;
+  users: any;
+  reports: any;
+  userQuestions: any;
+  userAnswers: any;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {
-    this.chartOptions = {
-      series: [44, 55, 13, 43, 22],
-      chart: {
-        width: 380,
-        type: "pie"
-      },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
-    };
+  constructor(private _changeDetectorRef: ChangeDetectorRef, private dataService: DataService) {
+
   }
 
   ngOnInit() {
     this.setPagination(this.candidates);
+    
+    this.subscription = this.dataService.getUsers().subscribe(
+      (response) => {
+        this.users = response;
+        console.log(this.users); 
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+
+    this.subscription = this.dataService.getReports().subscribe(
+      (response) => {
+        this.reports = response;
+        console.log(this.reports); 
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+
+    this.subscription = this.dataService.getUserQuestions().subscribe(
+      (response) => {
+        this.userQuestions = response;
+        console.log(this.userQuestions); 
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+
+    this.subscription = this.dataService.getUserAnswers().subscribe(
+      (response) => {
+        this.userAnswers = response;
+        console.log(this.userAnswers); 
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+
+
   }
 
   setPagination(tableData) {
@@ -89,28 +105,12 @@ export class AdminComponent implements OnInit {
     this._changeDetectorRef.detectChanges();
     this.dataSource.paginator = this.paginator;
     this.dataObs$ = this.dataSource.connect();
+  }
 
-    this.chartOptions = {
-      series: [44, 55, 13, 43, 22],
-      chart: {
-        width: 380,
-        type: "pie"
-      },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
-    };
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

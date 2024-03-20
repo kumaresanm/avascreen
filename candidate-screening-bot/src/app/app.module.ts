@@ -45,6 +45,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 // Third-Party Modules
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
+import { DataService } from './data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +96,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       animationDuration: 300
     }),
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
