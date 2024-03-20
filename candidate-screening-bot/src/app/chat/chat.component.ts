@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 })
 export class ChatComponent {
   userInput: string = '';
-  chatHistory: string[] = [];
+  chatHistory: { content: string, sender: string }[] = []; // Array of message objects
 
   constructor(private http: HttpClient) { }
 
@@ -21,12 +21,12 @@ export class ChatComponent {
       .pipe(
         catchError(error => {
           console.error('Error sending message:', error);
-          return of('An error occurred');
+          return of({ message: 'An error occurred' });
         })
       )
       .subscribe((response: any) => {
-        this.chatHistory.push(`You: ${this.userInput}`);
-        this.chatHistory.push(`AI: ${response.message}`);
+        this.chatHistory.push({ content: this.userInput, sender: 'user' });
+        this.chatHistory.push({ content: response.message, sender: 'AI' });
         this.userInput = '';
       });
   }
