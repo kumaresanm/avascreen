@@ -17,27 +17,28 @@ app.get('/api', (req, res) => {
 
 app.post('/chat', async (req, res) => {
     const { message } = req.body;
-    const apiKey = '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';
+
     const requestData = {
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "user",
-          content: message
-        }
+      contents: [
+          {
+              parts: [
+                  {
+                      text: message
+                  }
+              ]
+          }
       ]
-    };
+  }
     
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
       }
     };
     
-    axios.post('https://api.openai.com/v1/chat/completions', requestData, config)
+    axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyD3NEbEeaISMsLhR3l9KaKdLfIrNacYkrE', requestData, config)
     .then(response => {
-      const aiResponse = response.data.choices[0].text.trim();
+      const aiResponse = response.data.candidates[0].content.parts[0].text;
       res.json({ message: aiResponse });
     })
     .catch(error => {
