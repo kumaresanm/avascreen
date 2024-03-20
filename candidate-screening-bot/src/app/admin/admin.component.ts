@@ -1,13 +1,16 @@
-import {   ChangeDetectorRef,
+import {
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
   VERSION,
-  ViewChild } from '@angular/core';
+  ViewChild
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -16,23 +19,9 @@ import { DataService } from '../data.service';
 })
 export class AdminComponent implements OnInit, OnDestroy {
   subscription: Subscription;
+  fileName = '';
 
-
-  candidates = [
-    { name: 'Candidate 1', email: 'candidate1@example.com', resume: 'http://example.com/resume1.pdf', report: 'http://example.com/report1.pdf', status: "Pending"},
-    { name: 'Candidate 2', email: 'candidate2@example.com', resume: 'http://example.com/resume2.pdf', report: 'http://example.com/report2.pdf', status: "Selected" },
-    { name: 'Candidate 3', email: 'candidate3@example.com', resume: 'http://example.com/resume3.pdf', report: 'http://example.com/report3.pdf', status: "Interview Complete"},
-    { name: 'Candidate 4', email: 'candidate4@example.com', resume: 'http://example.com/resume4.pdf', report: 'http://example.com/report4.pdf', status: "Pending" },
-    { name: 'Candidate 5', email: 'candidate5@example.com', resume: 'http://example.com/resume5.pdf', report: 'http://example.com/report5.pdf', status: "Selected"},
-    { name: 'Candidate 6', email: 'candidate6@example.com', resume: 'http://example.com/resume6.pdf', report: 'http://example.com/report6.pdf', status: "Pending" },
-    { name: 'Candidate 7', email: 'candidate7@example.com', resume: 'http://example.com/resume7.pdf', report: 'http://example.com/report7.pdf', status: "Rejected"},
-    { name: 'Candidate 8', email: 'candidate8@example.com', resume: 'http://example.com/resume8.pdf', report: 'http://example.com/report8.pdf', status: "Pending" },
-    { name: 'Candidate 9', email: 'candidate9@example.com', resume: 'http://example.com/resume9.pdf', report: 'http://example.com/report9.pdf', status: "Review Submit"},
-    { name: 'Candidate 10', email: 'candidate10@example.com', resume: 'http://example.com/resume10.pdf', report: 'http://example.com/report10.pdf', status: "Pending" },
-    { name: 'Candidate 11', email: 'candidate11@example.com', resume: 'http://example.com/resume11.pdf', report: 'http://example.com/report11.pdf', status: "Rejected"},
-    { name: 'Candidate 12', email: 'candidate12@example.com', resume: 'http://example.com/resume12.pdf', report: 'http://example.com/report12.pdf', status: "Pending" },
-
-  ];
+  candidates = [];
 
   displayedColumns: string[] = [
     'name',
@@ -49,18 +38,50 @@ export class AdminComponent implements OnInit, OnDestroy {
   reports: any;
   userQuestions: any;
   userAnswers: any;
+  formData: any = {
+    requisitionId: '',
+    jobTitle: '',
+    jobDescription: ''
+  };
+  jobs: any = [{
+    requisitionId: '123344',
+    jobTitle: 'Senior Software Engineer',
+    jobDescription: 'Experienced in UI technologies.'
+  },
+  {
+    requisitionId: '223344',
+    jobTitle: 'Software Engineer',
+    jobDescription: 'Experienced in backend technologies.'
+  },
+  {
+    requisitionId: '123348',
+    jobTitle: 'Senior SDET',
+    jobDescription: 'Experienced in automation Selenium framework.'
+  }];
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private dataService: DataService) {
+
+  constructor(private _changeDetectorRef: ChangeDetectorRef, private dataService: DataService, private http: HttpClient) {
 
   }
 
   ngOnInit() {
     this.setPagination(this.candidates);
-    
+
     this.subscription = this.dataService.getUsers().subscribe(
       (response) => {
         this.users = response;
-        console.log(this.users); 
+        console.log(this.users);
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+
+    this.subscription = this.dataService.getCandidateData().subscribe(
+      (response) => {
+        this.candidates = response;
+        this.setPagination(this.candidates)
+        console.log(this.candidates);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -70,7 +91,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.subscription = this.dataService.getReports().subscribe(
       (response) => {
         this.reports = response;
-        console.log(this.reports); 
+        console.log(this.reports);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -80,7 +101,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.subscription = this.dataService.getUserQuestions().subscribe(
       (response) => {
         this.userQuestions = response;
-        console.log(this.userQuestions); 
+        console.log(this.userQuestions);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -90,7 +111,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.subscription = this.dataService.getUserAnswers().subscribe(
       (response) => {
         this.userAnswers = response;
-        console.log(this.userAnswers); 
+        console.log(this.userAnswers);
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -111,6 +132,39 @@ export class AdminComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  onFileSelected(event) {
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+
+      this.fileName = file.name;
+
+      const formData = new FormData();
+
+      formData.append("thumbnail", file);
+
+      const upload$ = this.http.post("/api/thumbnail-upload", formData);
+
+      upload$.subscribe();
+    }
+  }
+
+  onSubmit(): void {
+    if (this.formData.requisitionId && this.formData.jobTitle && this.formData.jobDescription) {
+      this.jobs.push({ ...this.formData });
+      this.formData = {
+        requisitionId: '',
+        jobTitle: '',
+        jobDescription: ''
+      };
+    }
+  }
+
+  deleteJob(job: any): void {
+    this.jobs = this.jobs.filter(j => j !== job);
   }
 
 }

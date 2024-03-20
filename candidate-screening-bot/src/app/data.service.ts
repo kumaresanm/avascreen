@@ -34,4 +34,9 @@ export class DataService {
     return this.http.get<any>(reportUrl);
   }
 
+  getCandidateData(): Observable<any>  {
+    const reportUrl = this.url + "api/candidatedata";
+    return this.http.get<any>(reportUrl);
+  }
+
 }

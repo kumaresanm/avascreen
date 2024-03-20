@@ -7,6 +7,7 @@ const userData = require('./data').userData;
 const reportData = require('./data').reportData;
 const questionSetData = require('./data').questionSetData;
 const userAnswersData = require('./data').userAnswersData;
+const candidateData = require('./data').candidateData;
 
 const PORT = process.env.PORT || 3000;
 
@@ -74,6 +75,11 @@ app.get('/api/useranswers', (req, res) => {
   res.json(userAnswersData);
 });
 
+
+// Endpoint to fetch User Answers data
+app.get('/api/candidatedata', (req, res) => {
+  res.json(candidateData);
+});
 
 // Start server
 app.listen(PORT, () => {
