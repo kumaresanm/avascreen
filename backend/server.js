@@ -17,7 +17,7 @@ app.get('/api', (req, res) => {
 
 app.post('/chat', async (req, res) => {
     const { message } = req.body;
-    const apiKey = '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';
+    const apiKey = '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';
     const requestData = {
       model: "gpt-3.5-turbo",
       messages: [
@@ -42,7 +42,8 @@ app.post('/chat', async (req, res) => {
     })
     .catch(error => {
       console.error('Error:', error);
-      res.status(500).json({ error: 'An error occurred' });
+      const errorResp = error.message;
+      res.status(429).json({ error: errorResp });
     });
 });
 
