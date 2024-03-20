@@ -22,6 +22,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 // Custom Modules
 import { CustomMaterialModule } from './core/material.module';
@@ -77,7 +79,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatDividerModule,
     MatChipsModule,
     MatListModule,
-
+    MatPaginatorModule,
+    NgApexchartsModule,
     // Custom Modules
     CustomMaterialModule,
 
