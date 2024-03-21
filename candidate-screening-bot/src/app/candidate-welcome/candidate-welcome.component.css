@@ -254,6 +254,7 @@ video {
   width: 100%; /* Full width of its parent */
   height: auto; /* Maintain aspect ratio */
   border-radius: 4px; /* Rounded corners for the video */
+  transform: scaleX(-1);
 }
 
 canvas {
