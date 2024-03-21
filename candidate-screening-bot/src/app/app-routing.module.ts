@@ -9,15 +9,16 @@ import { CandidateWelcomeComponent } from './candidate-welcome/candidate-welcome
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'candidate', component: CandidateComponent },
   { path: 'chat', component: ChatComponent },
-  {path: 'report', component: ReportComponent},
-  { path: 'welcome', component: CandidateWelcomeComponent }
+  { path: 'report', component: ReportComponent },
+  { path: 'welcome', component: CandidateWelcomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

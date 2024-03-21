@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 interface QuestionCard {
@@ -14,79 +15,35 @@ interface QuestionCard {
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
-export class ReportComponent {
-  constructor(private sanitizer: DomSanitizer) {} // Constructor added here
+export class ReportComponent implements OnInit {
+  constructor(private httpClient: HttpClient, private sanitizer: DomSanitizer) {}
 
-  overallScore = 75;
+  overallScore: number;
   circleColor = '#0e76a8';
   outerStrokeColor = '#ff6600';
   innerStrokeColor = '#f9b262';
-  // Mock data for recordedResponses
-  recordedResponses = [
-    {
-      question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
-      videoUrl: "/assets/interview.mp4",
-      thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
-      score: 8,
-      maxScore: 10,
-      duration: new Date(120000), // This represents a duration of 2 minutes
-      transcript: "Here would be the transcript of the candidate's response."
-    },
-    {
-      question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
-      videoUrl: "/assets/interview.mp4",
-      thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
-      score: 8,
-      maxScore: 10,
-      duration: new Date(120000), // This represents a duration of 2 minutes
-      transcript: "Here would be the transcript of the candidate's response."
-    },
-    {
-      question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
-      videoUrl: "/assets/interview.mp4",
-      thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
-      score: 8,
-      maxScore: 10,
-      duration: new Date(120000), // This represents a duration of 2 minutes
-      transcript: "Here would be the transcript of the candidate's response."
-    },
-    {
-      question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
-      videoUrl: "/assets/interview.mp4",
-      thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
-      score: 8,
-      maxScore: 10,
-      duration: new Date(120000), // This represents a duration of 2 minutes
-      transcript: "Here would be the transcript of the candidate's response."
-    }
-    // You can add more response objects here
-  ];
+  recordedResponses: any[]; // Adjust the type accordingly
+  transcriptLines: string[];
+  questionCards: QuestionCard[];
 
-  transcriptLines: string[] = [
-    "Sure, I'd be happy to provide some background about myself.",
-    "I have a bachelor's degree in Computer Science from XYZ University.",
-    "After graduation, I worked as a software engineer at ABC Company for three years.",
-    "During my time there, I developed expertise in web development and database management.",
-    "I'm passionate about leveraging technology to solve real-world problems.",
-    "In my free time, I enjoy hiking, reading, and volunteering at a local animal shelter."
-  ];
+  ngOnInit() {
+    this.fetchCandidateReport();
+  }
 
-  questionCards: QuestionCard[] = [
-    {
-      questionNumber: 'Question 1',
-      question: 'How do you manage security vulnerabilities inherent to using third-party CSS frameworks like Bootstrap? Give an example.',
-      reviewSummary: 'The candidate understands Bootstrap\'s integration but failed to explain detailed measures to manage security vulnerabilities.',
-      progressBarValue: 50,
-      score: '5/10'
-    },
-    {
-      questionNumber: 'Question 2',
-      question: 'Another question text here',
-      reviewSummary: 'Review summary of the second question.',
-      progressBarValue: 75,
-      score: '7.5/10'
-    }
-  ];
+  fetchCandidateReport(): void {
+    const apiUrl = `http://localhost:3000/api/candidateReport`;
+    this.httpClient.get(apiUrl).subscribe({
+      next: (report: any) => { // Replace 'any' with your actual expected type
+        this.overallScore = report.candidateInfo.interviewScore;
+        this.recordedResponses = report.recordedResponses;
+        this.transcriptLines = report.transcriptLines;
+        this.questionCards = report.questionCards;
+      },
+      error: (error) => {
+        console.error('Error fetching candidate report:', error);
+      }
+    });
+  }
 
   showCategorizedScores(event: any) {
     // Logic to display an overlay or tooltip with categorized scores

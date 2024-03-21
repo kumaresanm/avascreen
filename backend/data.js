@@ -79,11 +79,85 @@
 
   ];
 
-  
+  const candidateReport = {
+    "candidateInfo": {
+      "name": "Pratik Patel",
+      "email": "pratik.patel4057@gmail.com",
+      "role": "Full Stack Web Developer",
+      "yearsOfExperience": 4,
+      "skillsAssessed": ["Bootstrap", "CSS", "Git", "HTML", "JavaScript", "Laravel", "MySQL", "Webpack"],
+      "languageCommunication": "CEFR grade: B2",
+      "interviewScore": 75,
+      "avatarUrl": "https://path-to-avatar/avatar.jpg"
+    },
+    "recordedResponses": [
+      {
+        question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
+        videoUrl: "/assets/interview.mp4",
+        thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
+        score: 8,
+        maxScore: 10,
+        duration: new Date(120000), // This represents a duration of 2 minutes
+        transcript: "Here would be the transcript of the candidate's response."
+      },
+      {
+        question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
+        videoUrl: "/assets/interview.mp4",
+        thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
+        score: 8,
+        maxScore: 10,
+        duration: new Date(120000), // This represents a duration of 2 minutes
+        transcript: "Here would be the transcript of the candidate's response."
+      },
+      {
+        question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
+        videoUrl: "/assets/interview.mp4",
+        thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
+        score: 8,
+        maxScore: 10,
+        duration: new Date(120000), // This represents a duration of 2 minutes
+        transcript: "Here would be the transcript of the candidate's response."
+      },
+      {
+        question: "Could you help me understand more about your background by giving a brief introduction of yourself?",
+        videoUrl: "/assets/interview.mp4",
+        thumbnailUrl: "https://images.vexels.com/media/users/3/139567/isolated/preview/582aca4000ab46231333a1df893c947e-apple-logo-by-vexels.png",
+        score: 8,
+        maxScore: 10,
+        duration: new Date(120000), // This represents a duration of 2 minutes
+        transcript: "Here would be the transcript of the candidate's response."
+      }
+      // You can add more response objects here
+    ],
+    "transcriptLines": [
+      "Sure, I'd be happy to provide some background about myself.",
+      "I have a bachelor's degree in Computer Science from XYZ University.",
+      "After graduation, I worked as a software engineer at ABC Company for three years.",
+      "During my time there, I developed expertise in web development and database management.",
+      "I'm passionate about leveraging technology to solve real-world problems.",
+      "In my free time, I enjoy hiking, reading, and volunteering at a local animal shelter."
+    ],
+    "questionCards": [
+      {
+        "questionNumber": "Question 1",
+        "question": "How do you manage security vulnerabilities inherent to using third-party CSS frameworks like Bootstrap? Give an example.",
+        "reviewSummary": "The candidate understands Bootstrap's integration but failed to explain detailed measures to manage security vulnerabilities.",
+        "progressBarValue": 50,
+        "score": "5/10"
+      },
+      {
+        "questionNumber": "Question 2",
+        "question": "Another question text here",
+        "reviewSummary": "Review summary of the second question.",
+        "progressBarValue": 75,
+        "score": "7.5/10"
+      }]
+    };
   module.exports = {
     userData,
     reportData,
     questionSetData,
     userAnswersData,
-    candidateData
+    candidateData,
+    candidateReport
   };
