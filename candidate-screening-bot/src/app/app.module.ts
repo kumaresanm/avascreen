@@ -37,6 +37,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { ChatComponent } from './chat/chat.component';
 import { ReportComponent } from './report/report.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
@@ -59,7 +60,8 @@ import { DataService } from './data.service';
     ChatComponent,
     ReportComponent,
     SafeUrlPipe,
-    CandidateWelcomeComponent
+    CandidateWelcomeComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .left-pane {
+    flex: 1; /* Occupy half of the available space */
+    position: relative;
+    border-right: 1px solid #ccc;
+  }
+  
+  .right-pane {
+    flex: 1;
+    margin-left: 10px; /* Add margin for separation (optional) */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
+ 
+  .camera-box {
+    margin-top: 15%;
+    margin-bottom: 30%;
+    padding-bottom: 150px;
+    transform: scaleX(-1);
+  }
+  .camera-container {
+    display: flex;
+    flex-direction: column; /* Set flex direction to column */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+  }
+  
+  .liveCameraText {
+    margin-top: 80px; /* Optional: Add spacing between Live Camera text and camera box */
+    color: orange;
+  }
+
+  .feedback-container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="range"] {
+    width: 100%;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 5px;
+    resize: vertical;
+  }

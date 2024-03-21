@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="left-pane">
+        <div class="feedback-container">
+            <h2>Interview Feedback</h2>
+            <form (ngSubmit)="submitFeedback()">
+                <div *ngFor="let question of getRatingKeys()">
+                <label>{{ question }}</label>
+                <input type="range" min="0" max="10" step="1" [(ngModel)]="ratings[question]">
+                <span>{{ ratings[question] }}/10</span>
+                <textarea [(ngModel)]="comments[question]" placeholder="Comments"></textarea>
+                </div>
+                <button type="submit">Submit Feedback</button>
+            </form>
+          </div>
+    </div>
+    <div class="right-pane">
+        <h2>Overall Experience Rating</h2>
+        <div class="star-rating">
+        <span class="star" *ngFor="let star of stars" (click)="rateOverall(star)" [class.selected]="star <= overallRating">&#9733;</span>
+        </div>
+        <p>{{ overallRating }}/5</p>
+        </div>
+  </div>
+  

@@ -6,6 +6,7 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { ChatComponent } from './chat/chat.component';
 import { ReportComponent } from './report/report.component';
 import { CandidateWelcomeComponent } from './candidate-welcome/candidate-welcome.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'report', component: ReportComponent },
   { path: 'welcome', component: CandidateWelcomeComponent },
+  { path: 'feedback', component: FeedbackComponent }
 ];
 
 @NgModule({

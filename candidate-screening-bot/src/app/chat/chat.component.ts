@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -81,7 +82,7 @@ export class ChatComponent {
     currentQuestion: string = '';
     remainingTime: number = 180;
 
-  constructor() {
+  constructor(private router: Router) {
     this.currentQuestion = this.getNextQuestion();
   }
 
@@ -112,6 +113,9 @@ export class ChatComponent {
     console.log('User response:', this.userInput);
     this.currentQuestion = this.getNextQuestion();
     this.userInput = '';
+    if (this.currentQuestion === 'Thank you for completing the test.') {
+      this.router.navigate(["feedback"]);
+    } 
   }
 
   startTimer() {
