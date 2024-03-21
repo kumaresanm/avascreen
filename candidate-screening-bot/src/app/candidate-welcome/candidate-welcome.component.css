@@ -1,0 +1,319 @@
+/* General container styles */
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card styling for the left pane */
+.left-pane {
+  width: 45%;
+  background-color: #fff; /* White background for a clean look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for card effect */
+  border-radius: 8px; /* Rounded corners for the card */
+  overflow: hidden;
+  margin-right: 20px; /* Ensures spacing between the two panes */
+}
+
+.left-pane h2 {
+  color: #005792; /* Elegant blue for the heading */
+  padding: 20px;
+  margin: 0;
+  background-color: #eef6fc; /* Light background for the header */
+}
+
+.left-pane p {
+  color: #4a4a4a; /* Dark gray for text */
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 20px;
+  padding-top: 0;
+}
+
+.left-pane ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left-pane li {
+  padding: 12px 20px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: left center;
+  padding-left: 50px; /* Space for icon */
+  border-bottom: 1px solid #eaeaea; /* Soft border for list items */
+  transition: background-color 0.3s;
+}
+
+.left-pane li:hover {
+  background-color: #f7f7f7; /* Slightly darker background on hover */
+}
+
+/* Left-pane list item styles with FontAwesome icons */
+.left-pane li {
+  position: relative;
+  padding: 12px 20px;
+  padding-left: 50px; /* Space for icon */
+  border-bottom: 1px solid #eaeaea; /* Soft border for list items */
+  transition: background-color 0.3s;
+}
+
+.left-pane li::before {
+  font-family: "Font Awesome 5 Free"; /* FontAwesome font family */
+  content: "\f15b"; /* Default icon (file-alt) */
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px; /* Icon size */
+  width: 24px;
+  text-align: center;
+  color: #0077b6; /* Icon color */
+}
+
+.left-pane li:nth-child(1)::before { content: "\f15b"; } /* file-alt icon for resume upload */
+.left-pane li:nth-child(2)::before { content: "\f2c2"; } /* id-card icon for ID validation */
+.left-pane li:nth-child(3)::before { content: "\f5b0"; } /* robot icon for interacting with the bot */
+.left-pane li:nth-child(4)::before { content: "\f0e7"; } /* bolt icon for immediate feedback */
+/* Styling for the right pane */
+.right-pane {
+  width: 40%;
+  padding: 20px;
+}
+
+.mat-card {
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.mat-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mat-card-header {
+  background-color: #0077b6;
+  color: white;
+  padding: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.mat-card-title {
+  font-size: 18px;
+}
+
+.mat-card-content {
+  padding: 20px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+input[type="file"] {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: #e8e8e8;
+}
+
+/* Styling for the right pane */
+.mat-mdc-card {
+  position: relative;
+  border: none;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Increased the card size */
+  width: 100%;
+  height: auto;
+}
+.right-pane {
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mat-mdc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust visibility of your background image here */
+  z-index: 0;
+}
+
+.mat-mdc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.mat-mdc-card-header {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  color: white;
+  padding: 15px;
+}
+
+.mat-mdc-card-title {
+  font-size: 18px;
+}
+
+.mat-mdc-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for content */
+  border-radius: 4px;
+  margin: 15px;
+}
+
+input[type="file"] {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: #e8e8e8;
+}
+
+/* Specific backgrounds for cards */
+.mat-mdc-card:nth-child(1)::before {
+  background-image: url('https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+}
+
+.mat-mdc-card:nth-child(2)::before {
+  background-image: url('https://images.unsplash.com/photo-1584433144859-4e1e1e9cc7d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #e1e1e1;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #4CAF50;
+  width: 0%; /* Initial width 0, increase with JS */
+  border-radius: 5px;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  transition: width 0.4s ease-in-out;
+}
+
+.upload-section {
+  background-color: #f9f9f9; /* Light grey background for the section */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding around the content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center; /* Centering content */
+  margin-bottom: 20px; /* Margin to the bottom for spacing */
+}
+
+.upload-section h3 {
+  color: #333; /* Dark grey color for the title */
+  margin-bottom: 15px; /* Spacing between title and video element */
+}
+
+.video-capture {
+  background-color: #fff; /* White background for the video element */
+  border: 1px solid #e1e1e1; /* Border to distinguish the video area */
+  border-radius: 4px; /* Slightly rounded corners for the video element */
+  padding: 10px; /* Padding inside the video area */
+  position: relative; /* For positioning of the overlay elements */
+}
+
+video {
+  width: 100%; /* Full width of its parent */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 4px; /* Rounded corners for the video */
+}
+
+canvas {
+  display: none; /* Keep canvas hidden as it is not used for display */
+}
+button {
+  background-color: #ff6600; /* A lighter shade of Avalara's orange */
+  color: #fff !important; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px; /* Slightly rounded corners for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-weight: bold; /* Make the text slightly bolder */
+  width: 15%;
+  margin-right: 6px;
+}
+
+button:hover {
+  background-color: #f60; /* Avalara's original orange color for hover state */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+button:disabled {
+  background-color: #ffd9cc; /* Very light orange for disabled state */
+  color: #ffffff;
+  cursor: not-allowed;
+}
+.fa {
+  color: #f9a07b; /* Lighter shade of Avalara's orange, ensuring visibility yet subtleness */
+  transition: color 0.3s; /* Smooth transition for hover effects */
+}
+
+.fa:hover {
+  color: #f60; /* Slightly darker or the original Avalara orange on hover */
+}
+/* Change the step header background and text color */
+.mat-step-header {
+  background-color: #f60; /* Avalara's orange color */
+  color: white;
+}
+
+.mat-step-icon-selected {
+  background-color: white;
+  color: #f60;
+}
+
+/* Change the circle color */
+.mat-step-icon-selected, .mat-step-icon-state-done {
+  background-color: white;
+  color: #f60;
+}
+
+/* Change the line color between steps */
+.mat-stepper-horizontal-line {
+  background-color: #f9a07b; /* Lighter shade of Avalara's orange */
+}
+
+/* Customize the step header's completed state */
+.mat-step-header.mat-completed .mat-step-icon {
+  color: white;
+  background-color: #f60;
+}

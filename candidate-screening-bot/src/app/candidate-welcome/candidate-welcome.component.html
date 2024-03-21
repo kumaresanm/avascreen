@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- candidate-welcome.component.html -->
+<div class="container">
+  <div class="left-pane">
+    <h2>Welcome to the AvaScreen</h2>
+    <p>This tool will guide you through the interview process. Here's what to expect:</p>
+    <ul>
+      <li>Upload your resume for review.</li>
+      <li>Validate your identity with a government ID.</li>
+      <li>Engage with the bot to answer interview questions.</li>
+      <li>Receive immediate feedback and results.</li>
+    </ul>
+  </div>
+<mat-vertical-stepper linear #stepper style="width: 55%;">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Upload Your Resume</ng-template>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Upload Your Resume</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 120px;">
+
+          <input type="file" formControlName="firstCtrl" (change)="onResumeUpload($event)" />
+          <div class="progress-bar-container">
+            <div class="progress-bar" [style.width]="uploadProgress + '%'">{{ uploadProgress }}%</div>
+          </div>
+          <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Record Your Introduction</ng-template>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Record Your Introduction</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="video-capture">
+            <video #videoElement width="320" height="240" controls></video>
+            <button mat-icon-button (click)="startRecording()">
+              <mat-icon>play_circle_filled</mat-icon>
+            </button>
+            <button mat-icon-button (click)="startRecording()">
+              <mat-icon>stop_circle_filled</mat-icon>
+            </button>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" [style.width]="videoUploadProgress + '%'">{{ videoUploadProgress }}%</div>
+          </div>
+          <button mat-button matStepperNext>Next</button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Upload Your Government ID</ng-template>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Upload Your Government ID</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <input type="file" accept="image/*" formControlName="thirdCtrl" (change)="onIDUpload($event)" />
+          <div class="progress-bar-container">
+            <div class="progress-bar" [style.width]="idUploadProgress + '%'">{{ idUploadProgress }}%</div>
+          </div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="finalizeProcess()">Finish</button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-step>
+</mat-vertical-stepper>
+
+</div>

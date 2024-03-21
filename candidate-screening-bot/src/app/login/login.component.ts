@@ -20,7 +20,7 @@ export class LoginComponent {
       this.router.navigate(["report"]);
      }
      else if(this.username == 'candidate' && this.password == 'candidate'){
-      this.router.navigate(["candidate"]); 
+      this.router.navigate(["welcome"]);
      }
      else{
       alert("Invalid credentials");

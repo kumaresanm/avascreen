@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WebcamModule } from 'ngx-webcam';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,6 +25,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { MatStepperModule } from '@angular/material/stepper';
 
 // Custom Modules
 import { CustomMaterialModule } from './core/material.module';
@@ -44,6 +46,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 // Third-Party Modules
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { CandidateWelcomeComponent } from './candidate-welcome/candidate-welcome.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     CandidateComponent,
     ChatComponent,
     ReportComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    CandidateWelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -81,8 +85,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatListModule,
     MatPaginatorModule,
     NgApexchartsModule,
+    MatStepperModule,
     // Custom Modules
     CustomMaterialModule,
+    ReactiveFormsModule,
 
     // Third-Party Modules
     NgCircleProgressModule.forRoot({

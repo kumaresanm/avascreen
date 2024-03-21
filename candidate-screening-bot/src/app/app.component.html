@@ -1,12 +1,12 @@
-<mat-toolbar color="warn">
-    <mat-toolbar-row>
-    <span>AvaScreen</span>
-        <span class="example-fill-remaining-space"></span>
-        <span class="align-center"></span>
-        <span class="example-spacer"></span>
-        <button mat-button>About</button>
-        <button mat-button>Contact</button>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+<mat-toolbar>
+  <mat-toolbar-row>
+    <img src="/assets/logo.svg" alt="Logo" class="logo">
+    <span class="example-fill-remaining-space" style="padding: 10px;"></span>
+    <span class="align-center"></span>
+    <span class="example-spacer"></span>
+    <button mat-button>About</button>
+    <button mat-button>Contact</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
@@ -23,6 +23,6 @@
         <span>Disable alerts</span>
       </button>
     </mat-menu>
-     </mat-toolbar-row>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
