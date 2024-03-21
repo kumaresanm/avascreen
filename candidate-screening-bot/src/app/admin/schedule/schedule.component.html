@@ -1,0 +1,74 @@
+<mat-card-content class="main-content">
+    <mat-card class="test">
+        <h1>Schedule a Interview </h1>
+        <form class="schedule-form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="candidateName">Candidate Name:</label>
+                <input type="text" id="candidateName" name="candidateName" [(ngModel)]="formData.candidateName"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="candidateEmail">Candidate Email:</label>
+                <input type="email" id="candidateEmail" name="candidateEmail" [(ngModel)]="formData.candidateEmail"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="assessmentType">Assessment Type:</label>
+                <mat-form-field>
+                    <mat-label>Assessment Type</mat-label>
+                    <mat-select [(ngModel)]="formData.assessmentType" name="assessmentType" required>
+                        <mat-option value="Front End Developer">Front End Developer</mat-option>
+                        <mat-option value="Back End Developer">Back End Developer</mat-option>
+                        <mat-option value="Software Engineer">Software Engineer</mat-option>
+                        <mat-option value="Project Manager">Project Manager</mat-option>
+                        <mat-option value="Trainee">Trainee</mat-option>
+                        <mat-option value="Automation Specialist">Automation Specialist</mat-option>
+                        <mat-option value="Architect">Architect</mat-option>
+                        <mat-option value="Tech Lead">Tech Lead</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <label for="interviewDate">Interview Date:</label>
+                <input type="date" id="interviewDate" name="interviewDate" [(ngModel)]="formData.interviewDate"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Job Description:</label>
+                <input type="file" id="jobDescription" name="jobDescription" (change)="onFileSelected($event)" required>
+            </div>
+            <div class="form-group">
+                <label for="inviteDetails">Invite Details:</label>
+                <input type="text" id="inviteDetails" name="inviteDetails" [(ngModel)]="formData.inviteDetails"
+                    required>
+            </div>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </form>
+
+        <mat-divider></mat-divider>
+        <h1>All Candidate Schedule</h1>
+        <table class="job-table">
+            <thead>
+                <tr>
+                    <th>Candidate Name</th>
+                    <th>Candidate Email</th>
+                    <th>Assessment Type</th>
+                    <th>Interview Date</th>
+                    <th>Job Description</th>
+                    <th>Invite Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of candidatesData">
+                    <td>{{ job.candidateName }}</td>
+                    <td>{{ job.candidateEmail }}</td>
+                    <td>{{ job.assessmentType }}</td>
+                    <td>{{ job.interviewDate }}</td>
+                    <td>{{ job.jobDescription }}</td>
+                    <td>{{ job.inviteDetails }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </mat-card>
+</mat-card-content>

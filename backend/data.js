@@ -64,20 +64,115 @@
   ];
 
  const candidateData = [
-    { name: 'Candidate 1', email: 'candidate1@example.com', resume: 'http://example.com/resume1.pdf', report: 'http://example.com/report1.pdf', status: "Pending"},
-    { name: 'Candidate 2', email: 'candidate2@example.com', resume: 'http://example.com/resume2.pdf', report: 'http://example.com/report2.pdf', status: "Selected" },
-    { name: 'Candidate 3', email: 'candidate3@example.com', resume: 'http://example.com/resume3.pdf', report: 'http://example.com/report3.pdf', status: "Interview Complete"},
-    { name: 'Candidate 4', email: 'candidate4@example.com', resume: 'http://example.com/resume4.pdf', report: 'http://example.com/report4.pdf', status: "Pending" },
-    { name: 'Candidate 5', email: 'candidate5@example.com', resume: 'http://example.com/resume5.pdf', report: 'http://example.com/report5.pdf', status: "Selected"},
-    { name: 'Candidate 6', email: 'candidate6@example.com', resume: 'http://example.com/resume6.pdf', report: 'http://example.com/report6.pdf', status: "Pending" },
-    { name: 'Candidate 7', email: 'candidate7@example.com', resume: 'http://example.com/resume7.pdf', report: 'http://example.com/report7.pdf', status: "Rejected"},
-    { name: 'Candidate 8', email: 'candidate8@example.com', resume: 'http://example.com/resume8.pdf', report: 'http://example.com/report8.pdf', status: "Pending" },
-    { name: 'Candidate 9', email: 'candidate9@example.com', resume: 'http://example.com/resume9.pdf', report: 'http://example.com/report9.pdf', status: "Review Submit"},
-    { name: 'Candidate 10', email: 'candidate10@example.com', resume: 'http://example.com/resume10.pdf', report: 'http://example.com/report10.pdf', status: "Pending" },
-    { name: 'Candidate 11', email: 'candidate11@example.com', resume: 'http://example.com/resume11.pdf', report: 'http://example.com/report11.pdf', status: "Rejected"},
-    { name: 'Candidate 12', email: 'candidate12@example.com', resume: 'http://example.com/resume12.pdf', report: 'http://example.com/report12.pdf', status: "Pending" },
-
-  ];
+  {
+    "Name": "Yogesh",
+    "Email": "yogesh@gmail.com",
+    "Resume": "yogesh_cv.pdf",
+    "Report": "interview_report_yogesh.pdf",
+    "Status": "SELECTED",
+    "CompletedDate": "2024-03-18",
+    "NextInterviewDate": "2024-04-01"
+  },
+  {
+    "Name": "Kumar",
+    "Email": "kumar@gmail.com",
+    "Resume": "Kumar_resume.pdf",
+    "Report": "interview_report_Kumar.pdf",
+    "Status": "COMPLETED",
+    "CompletedDate": "2024-03-15",
+    "NextInterviewDate": null
+  },
+  {
+    "Name": "Jeet",
+    "Email": "Jeet@gmail.com",
+    "Resume": "Jeet_resume.pdf",
+    "Report": "interview_report_Jeet.pdf",
+    "Status": "PENDING",
+    "CompletedDate": null,
+    "NextInterviewDate": "2024-03-25"
+  },
+  {
+    "Name": "Dablu",
+    "Email": "Dablu@gmail.com",
+    "Resume": "Dablu_resume.pdf",
+    "Report": "interview_report_Dablu.pdf",
+    "Status": "COMPLETED",
+    "CompletedDate": "2024-03-12",
+    "NextInterviewDate": null
+  },
+  {
+    "Name": "John Doe",
+    "Email": "john.doe@example.com",
+    "Resume": "john_doe_resume.pdf",
+    "Report": "interview_report_JohnDoe.pdf",
+    "Status": "PENDING",
+    "CompletedDate": null,
+    "NextInterviewDate": "2024-04-05"
+  },
+  {
+    "Name": "Alice Smith",
+    "Email": "alice.smith@example.com",
+    "Resume": "alice_smith_resume.pdf",
+    "Report": "interview_report_AliceSmith.pdf",
+    "Status": "SELECTED",
+    "CompletedDate": "2024-03-10",
+    "NextInterviewDate": "2024-03-20"
+  },
+  {
+    "Name": "Emily Jones",
+    "Email": "emily.jones@example.com",
+    "Resume": "emily_jones_resume.pdf",
+    "Report": "interview_report_EmilyJones.pdf",
+    "Status": "COMPLETED",
+    "CompletedDate": "2024-03-05",
+    "NextInterviewDate": null
+  },
+  {
+    "Name": "Michael Johnson",
+    "Email": "michael.johnson@example.com",
+    "Resume": "michael_johnson_resume.pdf",
+    "Report": "interview_report_MichaelJohnson.pdf",
+    "Status": "PENDING",
+    "CompletedDate": null,
+    "NextInterviewDate": "2024-03-29"
+  },
+  {
+    "Name": "Sophia Brown",
+    "Email": "sophia.brown@example.com",
+    "Resume": "sophia_brown_resume.pdf",
+    "Report": "interview_report_SophiaBrown.pdf",
+    "Status": "SELECTED",
+    "CompletedDate": "2024-03-20",
+    "NextInterviewDate": "2024-04-05"
+  },
+  {
+    "Name": "David Wilson",
+    "Email": "david.wilson@example.com",
+    "Resume": "david_wilson_resume.pdf",
+    "Report": "interview_report_DavidWilson.pdf",
+    "Status": "COMPLETED",
+    "CompletedDate": "2024-03-18",
+    "NextInterviewDate": null
+  },
+  {
+    "Name": "Emma Taylor",
+    "Email": "emma.taylor@example.com",
+    "Resume": "emma_taylor_resume.pdf",
+    "Report": "interview_report_EmmaTaylor.pdf",
+    "Status": "PENDING",
+    "CompletedDate": null,
+    "NextInterviewDate": "2024-04-10"
+  },
+  {
+    "Name": "Daniel Martinez",
+    "Email": "daniel.martinez@example.com",
+    "Resume": "daniel_martinez_resume.pdf",
+    "Report": "interview_report_DanielMartinez.pdf",
+    "Status": "SELECTED",
+    "CompletedDate": "2024-03-10",
+    "NextInterviewDate": "2024-03-25"
+  }
+];
 
   const candidateReport = {
     "candidateInfo": {

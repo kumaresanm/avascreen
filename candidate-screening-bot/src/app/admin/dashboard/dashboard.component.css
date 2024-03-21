@@ -1,0 +1,11 @@
+.selected {
+    color: green;
+  }
+  
+  .pending {
+    color: orange;
+  }
+  
+  .completed {
+    color: blue;
+  }

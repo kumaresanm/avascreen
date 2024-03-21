@@ -7,67 +7,29 @@ margin-bottom: 10px;">
     </div>
   </div>
 </mat-card-header>
+<mat-card-content>
+  <nav mat-tab-nav-bar>
 
-<mat-card-content class="main-content">
-  <mat-card class="test">
-    <div class="container">
-      <h1>All Candidates Dashboard</h1>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-          <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
-        </ng-container>
+    <a mat-tab-link routerLink="/admin/dashboard" routerLinkActive #dashboardTab="routerLinkActive"
+      [active]="dashboardTab.isActive">
+      <span class="material-icons">
+        dashboard
+      </span>
+      Dashboard
+    </a>
+    <a mat-tab-link routerLink="/admin/requisition" routerLinkActive #requisitionTab="routerLinkActive"
+      [active]="requisitionTab.isActive"><span class="material-icons">
+        work_outline
+      </span>Requisition</a>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
-      </table>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5"></mat-paginator>
+    <a mat-tab-link routerLink="/admin/schedule" routerLinkActive #scheduleTab="routerLinkActive"
+      [active]="scheduleTab.isActive">
+      <span class="material-icons">
+        schedule
+      </span>
+      Schedule</a>
 
-    </div>
-  </mat-card>
-</mat-card-content>
-<mat-divider></mat-divider>
-<mat-card-content class="main-content">
-  <mat-card class="test">
-    <h1> New Job Requisition</h1>
-    <form class="job-form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="requisitionId">Requisition ID:</label>
-        <input type="text" id="requisitionId" name="requisitionId" [(ngModel)]="formData.requisitionId" required>
-      </div>
-      <div class="form-group">
-        <label for="jobTitle">Job Title:</label>
-        <input type="text" id="jobTitle" name="jobTitle" [(ngModel)]="formData.jobTitle" required>
-      </div>
-      <div class="form-group">
-        <label for="jobDescription">Job Description:</label>
-        <input type="text" id="jobDescription" name="jobDescription" [(ngModel)]="formData.jobDescription" required>
-      </div>
-      <div class="form-group">
-        <label for="jobFile">Job Description File:</label>
-        <input type="file" id="jobFile" name="jobFile" (change)="onFileSelected($event)">
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+  </nav>
 
-    <table class="job-table">
-      <thead>
-        <tr>
-          <th>Requisition ID</th>
-          <th>Job Title</th>
-          <th>Job Description</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let job of jobs">
-          <td>{{ job.requisitionId }}</td>
-          <td>{{ job.jobTitle }}</td>
-          <td>{{ job.jobDescription }}</td>
-          <td><button class="delete-button" (click)="deleteJob(job)">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
-
-  </mat-card>
+  <router-outlet></router-outlet>
 </mat-card-content>

@@ -1,0 +1,54 @@
+<mat-card-content class="main-content">
+    <mat-card class="test">
+        <h1> New Job Requisition</h1>
+        <form class="job-form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="requisitionId">Requisition ID:</label>
+                <input type="text" id="requisitionId" name="requisitionId" [(ngModel)]="formData.requisitionId"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle" [(ngModel)]="formData.jobTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Job Description:</label>
+                <input type="text" id="jobDescription" name="jobDescription" [(ngModel)]="formData.jobDescription"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Requisition Open Date:</label>
+                <input type="date" id="requisitionDate" name="requisitionDate" [(ngModel)]="formData.requisitionDate"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="jobFile">Job Description File:</label>
+                <input type="file" id="jobFile" name="jobFile" (change)="onFileSelected($event)">
+            </div>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </form>
+        <mat-divider></mat-divider>
+        <h1>All Requisitions</h1>
+        <table class="job-table">
+            <thead>
+                <tr>
+                    <th>Requisition ID</th>
+                    <th>Job Title</th>
+                    <th>Job Description</th>
+                    <th>Requisition Open Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of jobs">
+                    <td>{{ job.requisitionId }}</td>
+                    <td>{{ job.jobTitle }}</td>
+                    <td>{{ job.jobDescription }}</td>
+                    <td>{{ job.requisitionDate }}</td>
+                    <td><button mat-raised-button color="warn" class="delete-button" (click)="deleteJob(job)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </mat-card>
+</mat-card-content>

@@ -26,6 +26,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { MatStepperModule } from '@angular/material/stepper';
+import { RouterModule } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // Custom Modules
 import { CustomMaterialModule } from './core/material.module';
@@ -50,6 +52,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CandidateWelcomeComponent } from './candidate-welcome/candidate-welcome.component';
 
 import { DataService } from './data.service';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ScheduleComponent } from './admin/schedule/schedule.component';
+import { RequisitionComponent } from './admin/requisition/requisition.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,10 @@ import { DataService } from './data.service';
     ReportComponent,
     SafeUrlPipe,
     CandidateWelcomeComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    DashboardComponent,
+    ScheduleComponent,
+    RequisitionComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +101,8 @@ import { DataService } from './data.service';
     // Custom Modules
     CustomMaterialModule,
     ReactiveFormsModule,
-
+    RouterModule,
+    MatTabsModule,
     // Third-Party Modules
     NgCircleProgressModule.forRoot({
       radius: 80,
