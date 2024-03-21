@@ -48,6 +48,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CandidateWelcomeComponent } from './candidate-welcome/candidate-welcome.component';
 
+import { DataService } from './data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +102,7 @@ import { CandidateWelcomeComponent } from './candidate-welcome/candidate-welcome
       animationDuration: 300
     }),
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
